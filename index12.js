@@ -8,3 +8,10 @@
 
 //제한사항
 //n은 10,000 이하의 자연수 입니다.
+const add = (n) => {
+  let count = 0;
+  for (let i = 1; i <= n; i++) {
+    if (n % i === 0) {
+      count++;
+    }
+  }
