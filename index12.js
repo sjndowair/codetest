@@ -9,23 +9,38 @@
 //제한사항
 //n은 10,000 이하의 자연수 입니다.
 const solution = (num) => {
-  let count = 0; // 연속된 자연수 합의 개수를 저장하는 변수
-
-  for (let start = 1; start <= num; start++) {
-    // 시작 숫자를 1부터 num까지 순회
-    let sum = 0; // 각 시작 숫자마다 합을 계산하는 변수
-    for (let i = start; i <= num; i++) {
-      // 시작 숫자부터 num까지 연속된 자연수 합을 계산
-      sum += i; // 현재 숫자를 합에 추가
+  let count = 0;
+  for (let i = 1; i <= parseInt(num / 2); i++) {
+    let sum = 0;
+    for (let j = i; i < num; j++) {
+      sum += j;
       if (sum === num) {
-        // 합이 목표 숫자와 같으면
-        count++; // 개수를 증가시키고
-        break; // 내부 루프 종료
+        count++;
+        break;
       } else if (sum > num) {
-        // 합이 목표 숫자보다 크면
-        break; // 더 이상 합을 계산할 필요가 없으므로 내부 루프 종료
+        break;
       }
     }
   }
-  return count; // 연속된 자연수 합의 개수 반환
+  return count + 1;
 };
+
+console.log(solution(3123120));
+
+//참고용 소스 코드 속도가 앞도적으로 빠름
+function expressions(num) {
+  var answer = 0;
+  var k = 0;
+
+  while ((k * (k - 1)) / 2 <= num) {
+    if (Number.isInteger(num / k - (k - 1) / 2) && num / k - (k - 1) / 2 != 0) {
+      answer++;
+    }
+    k++;
+  }
+
+  return answer;
+}
+
+// 아래는 테스트로 출력해 보기 위한 코드입니다.
+console.log(expressions(11231231231231231231231235));
