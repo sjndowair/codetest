@@ -19,3 +19,6 @@ const solution = (str) => {
 };
 
 console.log(solution("baabaa"));
+
+const a = 3.6;
+console.log(parseFloat(a));
