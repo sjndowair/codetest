@@ -7,16 +7,57 @@ function solution(want, number, discount) {
   for (let i = 0; i < discount.length - 9; i++) {
     const slice = discount.slice(i, i + 10);
 
-    const flag = true;
+    let flag = true;
     for (let j = 0; j < want.length; j++) {
       if (slice.filter((item) => item === want[j]).length !== number[j]) {
         flag = false;
         break;
       }
-      if (flag) {
-        count++;
-      }
+    }
+    if (flag) {
+      count++;
     }
   }
   return count;
 }
+
+console.log(
+  solution(
+    ["banana", "apple", "rice", "pork", "pot"],
+    [3, 2, 2, 2, 1],
+    [
+      "chicken",
+      "apple",
+      "apple",
+      "banana",
+      "rice",
+      "apple",
+      "pork",
+      "banana",
+      "pork",
+      "rice",
+      "pot",
+      "banana",
+      "apple",
+      "banana",
+    ]
+  )
+);
+
+const solution = (b, y) => {
+  const bigNum = b + y;
+
+  for (let h = 3; h <= bigNum; h++) {
+    const w = bigNum / h;
+
+    if (
+      bigNum % h === 0 &&
+      w >= h &&
+      w * 2 + h * 2 - 4 === b &&
+      (w - 2) * (h - 2) === y
+    )
+      return [w, h];
+  }
+};
+
+console.log(solution(10, 2));
