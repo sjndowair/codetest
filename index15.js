@@ -12,3 +12,22 @@ const solution = (N, A, B) => {
 };
 
 console.log(solution(8, 4, 7));
+
+const discount = [
+  "chicken",
+  "apple",
+  "apple",
+  "banana",
+  "rice",
+  "apple",
+  "pork",
+  "banana",
+  "pork",
+  "rice",
+  "pot",
+  "banana",
+  "apple",
+  "banana",
+];
+console.log(discount.slice(0, 10));
+console.log(discount.filter((item) => item === "apple"));
