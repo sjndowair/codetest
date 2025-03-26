@@ -43,21 +43,3 @@ console.log(
     ]
   )
 );
-
-const solution = (b, y) => {
-  const bigNum = b + y;
-
-  for (let h = 3; h <= bigNum; h++) {
-    const w = bigNum / h;
-
-    if (
-      bigNum % h === 0 &&
-      w >= h &&
-      w * 2 + h * 2 - 4 === b &&
-      (w - 2) * (h - 2) === y
-    )
-      return [w, h];
-  }
-};
-
-console.log(solution(10, 2));

@@ -7,39 +7,27 @@
 //작업 속도는 100 이하의 자연수입니다.
 //배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다
 
-function solution(progresses, speeds) {
-  const answer = [];
-  const stack = [];
-}
-function solution3(a, b) {
+const solution = (progress, speeds) => {
+  const days = progress.map((progress, index) => {
+    return Math.ceil((100 - progress) / speeds[index]);
+  });
   const arr = [];
-  const stack = [];
-  let count = 0;
-  let index = 0;
-  let num = 0;
-  const complete = a[index] + b[index];
-  while (complete < 100) {
-    complete += b[index];
-    count++;
-    if (complete >= 100) {
-      arr.push(count);
-      count = 0;
-    }
-    index++;
-  }
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length - 1; j++) {
-      if (arr[i] >= arr[j]) {
-        num++;
-        stack.push(num);
-        num = 0;
-      } else {
-        stack.push(1);
-        break;
-      }
-    }
-  }
-  return stack;
-}
+  let count = 1;
+  let maxDay = days[0];
 
-console.log(solution3([93, 30, 55], [1, 30, 5]));
+  for (let i = 1; i < days.length; i++) {
+    if (days[i] <= maxDay) {
+      count++;
+    } else {
+      arr.push(count);
+      count = 1;
+      maxDay = days[i];
+    }
+  }
+  arr.push(count); // 마지막 그룹의 count를 한 번만 추가
+  return arr;
+};
+
+// 테스트
+console.log(solution([93, 30, 55], [1, 30, 5])); // [2, 1]
+console.log(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1])); // [1, 3, 2]
