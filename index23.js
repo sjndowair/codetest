@@ -69,3 +69,30 @@ isSet.add(1);
 isSet.add(1);
 
 console.log(isSet);
+
+//문제 풀이 두번째 케이스 추가
+
+function solution(topings) {
+  let count = 0;
+  const leftMap = new Map();
+  const rightMap = new Map();
+  for (let i = 0; i < topings.length; i++) {
+    rightMap.set(
+      topings[i],
+      rightMap.get(topings[i]) ? rightMap.get(topings[i]) + 1 : 1
+    );
+  }
+  for (let i = 0; i < topings.length; i++) {
+    leftMap.set(
+      topings[i],
+      leftMap.get(topings[i]) ? leftMap.get(topings[i]) + 1 : 1
+    );
+    if (rightMap.get(topings[i]) > 1)
+      rightMap.set(topings[i], rightMap.get(topings[i]) - 1);
+    else if (rightMap.get(topings[i]) === 1) rightMap.delete(topings[i]);
+    if (leftMap.size === rightMap.size) {
+      count++;
+    }
+  }
+  return count;
+}
