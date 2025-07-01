@@ -19,3 +19,5 @@ console.log(solution(15));
 const dd = [1, 2, 3, 4, 5];
 console.log(dd.slice(0, 3));
 console.log(dd);
+
+

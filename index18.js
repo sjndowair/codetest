@@ -38,35 +38,4 @@ function solution2(a, b) {
 
 console.log(solution2([93, 30, 55], [1, 30, 5]));
 
-function solution3(a, b) {
-  const arr = [];
-  const stack = [];
-  let count = 0;
-  let index = 0;
-  let num = 0;
-  const complete = a[index] + b[index];
-  while (complete < 100) {
-    complete += b[index];
-    count++;
-    if (complete >= 100) {
-      arr.push(count);
-      count = 0;
-    }
-    index++;
-  }
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length - 1; j++) {
-      if (arr[i] >= arr[j]) {
-        num++;
-        stack.push(num);
-        num = 0;
-      } else {
-        stack.push(1);
-        break;
-      }
-    }
-  }
-  return stack;
-}
 
-console.log(solution3([93, 30, 55], [1, 30, 5]));
